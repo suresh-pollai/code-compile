@@ -1,0 +1,28 @@
+version: '3'
+services:
+  code-runner:
+    build: .
+    container_name: code-runner
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - python-runner
+      - javascript-runner
+      - php-runner
+      - c-runner
+      - cpp-runner
+      - java-runner
+  python-runner:
+    image: python:3.9
+  javascript-runner:
+    image: node:14
+  php-runner:
+    image: php:7.4-cli
+  c-runner:
+    image: gcc:latest
+  cpp-runner:
+    image: gcc:latest
+  java-runner:
+    image: openjdk:11
